@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adidas</title>
+    <link rel="stylesheet" href="./styles.css">
+    <!-- google font  -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700,900&display=swap" rel="stylesheet">
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Tweenmax GSAP  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="overlay first"></div>
+        <div class="overlay second"></div>
+        <div class="overlay third"></div>
+
+        <div class="nav">
+            <div class="logo">adidas<span class="reg">&reg;</span></div>
+            <div class="menu"><i class="fa fa-bars"></i></div>
+            <div class="search"><i class="fa fa-search"></i></div>
+            <div class="bag"><i class="fa fa-shopping-bag"></i></div>
+        </div>
+
+        <a href="https://www.adidas.com/us/shoes" class="product-link" target="_blank">
+            <img src="hero.png" alt="" class="product-img">
+        </a>
+
+        <div class="product-text">
+            <h1 class="product-title">adidas.</h1>
+        </div>
+
+        <div class="product-desc">
+            <p>O conforto puro está aqui!</p>
+        </div>
+
+        <div class="size">
+            <ul>
+                <span>Tamanho :</span>
+                <li class="size-option" data-size="7">40</li>
+                <li class="size-option" data-size="8">41</li>
+                <li class="size-option" data-size="9">42</li>
+            </ul>
+        </div>
+
+        <div class="bottom-img"></div>
+
+        <div class="bottom-right left-button">
+            <ul>
+                <li class="nav-arrow" data-direction="prev"><i class="fa fa-chevron-left"></i></li>
+                <li class="nav-arrow" data-direction="next"><i class="fa fa-chevron-right"></i></li>
+            </ul>
+        </div>
+
+        <div class="media">
+            <ul>
+                <li><a href="https://www.facebook.com/adidas" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/adidas" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com/adidas" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        TweenMax.to('.first', 1.5, {
+            delay: .2,
+            left: '-100%',
+            ease: Expo.easeInOut
+        })
+
+        TweenMax.to('.second', 1.5, {
+            delay: .4,
+            left: '-100%',
+            ease: Expo.easeInOut
+        })
+
+        TweenMax.to('.third', 1.5, {
+            delay: .6,
+            left: '-100%',
+            ease: Expo.easeInOut
+        })
+
+        TweenMax.from('.logo', 1, {
+            delay: 1,
+            opacity: 0,
+            x: -20,
+            ease: Expo.easeInOut
+        })
+        TweenMax.from('.menu', 1, {
+            delay: 1.2,
+            opacity: 0,
+            x: -20,
+            ease: Expo.easeInOut
+        })
+
+        TweenMax.from('.search', .8, {
+            delay: 1.6,
+            opacity: 0,
+            x: -20,
+            ease: Expo.easeInOut
+        })
+
+        TweenMax.from('.bag', 1, {
+            delay: 1.6,
+            opacity: 0,
+            x: -20,
+            ease: Expo.easeInOut
+        })
+
+        TweenMax.staggerFrom('.media ul li', 1, {
+            delay: 2,
+            opacity: 0,
+            x: -20,
+            ease: Power3.easeInOut
+        }, 0.08)
+
+        TweenMax.from('.size', 1, {
+            delay: 1.8,
+            opacity: 0,
+            x: -20,
+            ease: Expo.easeInOut
+        })
+        TweenMax.staggerFrom('.size ul li', .3, {
+            delay: 2,
+            opacity: 0,
+            y: 20,
+            ease: Power3.easeInOut
+        }, 0.08)
+        TweenMax.from('.bottom-right ul li:first-child', .5, {
+            delay: 2.4,
+            opacity: 0,
+            x: -20,
+            ease: Expo.easeInOut
+        })
+        TweenMax.from('.bottom-right ul li:last-child', .6, {
+            delay: 2.4,
+            opacity: 0,
+            x: -20,
+            ease: Expo.easeInOut
+        })
+        TweenMax.from('.bottom-img', 1, {
+            delay: 2.4,
+            opacity: 0,
+            x: -20,
+            ease: Expo.easeInOut
+        })
+
+        TweenMax.from('.product-title', 3, {
+            delay: 2.2,
+            opacity: 0,
+            y: 50,
+            ease: Expo.easeInOut
+        })
+        TweenMax.from('.product-img', 1, {
+            delay: 4.2,
+            opacity: 0,
+            y: -800,
+            ease: Expo.easeInOut
+        })
+        TweenMax.from('.product-desc p', 3, {
+            delay: 4.5,
+            opacity: 0,
+            y: -50,
+            ease: Expo.easeInOut
+        })
+        
+        // Funcionalidade interativa
+        document.addEventListener('DOMContentLoaded', function() {
+            // Funcionalidade do seletor de tamanho
+            const sizeOptions = document.querySelectorAll('.size-option');
+            sizeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove a classe active de todos
+                    sizeOptions.forEach(opt => opt.classList.remove('active'));
+                    // Adiciona a classe active ao clicado
+                    this.classList.add('active');
+                    const size = this.getAttribute('data-size');
+                    console.log('Tamanho selecionado: ' + size);
+                });
+            });
+            
+            // Setas de navegação
+            const navArrows = document.querySelectorAll('.nav-arrow');
+            navArrows.forEach(arrow => {
+                arrow.addEventListener('click', function() {
+                    const direction = this.getAttribute('data-direction');
+                    console.log('Navegação: ' + direction);
+                    // Adiciona efeito de clique
+                    this.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+            
+            // Ícone do menu
+            const menuIcon = document.querySelector('.menu');
+            if (menuIcon) {
+                menuIcon.addEventListener('click', function() {
+                    console.log('Menu clicado');
+                    this.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            }
+            
+            // Ícone de busca
+            const searchIcon = document.querySelector('.search');
+            if (searchIcon) {
+                searchIcon.addEventListener('click', function() {
+                    console.log('Busca clicada');
+                    this.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            }
+            
+            // Ícone de sacola
+            const bagIcon = document.querySelector('.bag');
+            if (bagIcon) {
+                bagIcon.addEventListener('click', function() {
+                    console.log('Sacola clicada');
+                    this.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            }
+            
+            // Ícones de redes sociais
+            const socialLinks = document.querySelectorAll('.media a');
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    console.log('Abrindo: ' + this.getAttribute('href'));
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
